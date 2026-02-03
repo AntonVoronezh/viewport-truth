@@ -1,6 +1,6 @@
 {
   "name": "viewport-truth",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Accurate mobile viewport metrics (VisualViewport-first) with SSR-safe APIs and keyboard detection for React, Vue, Svelte, Solid, Angular, and vanilla JS.",
   "author": {
     "name": "AntonVoronezh",
