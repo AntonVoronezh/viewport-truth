@@ -1,6 +1,6 @@
 {
   "name": "viewport-truth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Accurate mobile viewport metrics (VisualViewport-first) with SSR-safe APIs and keyboard detection for React, Vue, Svelte, Solid, Angular, and vanilla JS.",
   "author": {
     "name": "AntonVoronezh",
@@ -37,9 +37,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "postinstall": "node ./banner.js || exit 0"
   },
-  "keywords": [
-
-  ],
+  "keywords": [],
   "license": "MIT",
   "type": "module",
   "sideEffects": false,
