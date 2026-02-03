@@ -1,0 +1,120 @@
+{
+  "name": "viewport-truth",
+  "version": "1.0.0",
+  "description": "",
+  "author": {
+    "name": "AntonVoronezh",
+    "email": "anton.voronezh.1990@gmail.com",
+    "url": "https://github.com/AntonVoronezh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonVoronezh/viewport-truth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AntonVoronezh/viewport-truth/issues"
+  },
+  "homepage": "https://github.com/AntonVoronezh/viewport-truth#readme",
+  "funding": [
+    {
+      "type": "boosty",
+      "url": "https://boosty.to/antonvoronezh/donate"
+    },
+    {
+      "type": "crypto",
+      "url": "https://t.me/AntonVoronezhh/4"
+    }
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "banner.js"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "postinstall": "node ./banner.js || exit 0"
+  },
+  "keywords": [
+
+  ],
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "default": "./dist/core/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "default": "./dist/react.js"
+    },
+    "./vue": {
+      "types": "./dist/vue.d.ts",
+      "default": "./dist/vue.js"
+    },
+    "./svelte": {
+      "types": "./dist/svelte.d.ts",
+      "default": "./dist/svelte.js"
+    },
+    "./solid": {
+      "types": "./dist/solid.d.ts",
+      "default": "./dist/solid.js"
+    },
+    "./angular": {
+      "types": "./dist/angular.d.ts",
+      "default": "./dist/angular.js"
+    },
+    "./vanilla": {
+      "types": "./dist/vanilla.d.ts",
+      "default": "./dist/vanilla.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "vue": ">=3.3.0",
+    "svelte": ">=4.0.0",
+    "solid-js": ">=1.7.0",
+    "@angular/core": ">=17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    },
+    "solid-js": {
+      "optional": true
+    },
+    "@angular/core": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "@types/node": "^22.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "vue": "^3.5.0",
+    "svelte": "^4.2.0",
+    "solid-js": "^1.9.0",
+    "@angular/core": "^17.3.0",
+    "@angular/common": "^17.3.0",
+    "rxjs": "^7.8.0"
+  }
+}
