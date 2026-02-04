@@ -28,12 +28,12 @@
   "files": [
     "dist",
     "README.md",
-    "LICENSE",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "keywords": [
     "viewport",
@@ -77,44 +77,7 @@
     "node": ">=18"
   },
   "license": "MIT",
-  "type": "module",
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./core": {
-      "types": "./dist/core/index.d.ts",
-      "default": "./dist/core/index.js"
-    },
-    "./react": {
-      "types": "./dist/react.d.ts",
-      "default": "./dist/react.js"
-    },
-    "./vue": {
-      "types": "./dist/vue.d.ts",
-      "default": "./dist/vue.js"
-    },
-    "./svelte": {
-      "types": "./dist/svelte.d.ts",
-      "default": "./dist/svelte.js"
-    },
-    "./solid": {
-      "types": "./dist/solid.d.ts",
-      "default": "./dist/solid.js"
-    },
-    "./angular": {
-      "types": "./dist/angular.d.ts",
-      "default": "./dist/angular.js"
-    },
-    "./vanilla": {
-      "types": "./dist/vanilla.d.ts",
-      "default": "./dist/vanilla.js"
-    }
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "peerDependencies": {
     "react": ">=18.0.0",
     "vue": ">=3.3.0",
@@ -152,5 +115,43 @@
     "@angular/core": "^17.3.0",
     "@angular/common": "^17.3.0",
     "rxjs": "^7.8.0"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
+    },
+    "./vue": {
+      "types": "./dist/vue.d.ts",
+      "import": "./dist/vue.js"
+    },
+    "./svelte": {
+      "types": "./dist/svelte.d.ts",
+      "import": "./dist/svelte.js"
+    },
+    "./solid": {
+      "types": "./dist/solid.d.ts",
+      "import": "./dist/solid.js"
+    },
+    "./angular": {
+      "types": "./dist/angular.d.ts",
+      "import": "./dist/angular.js"
+    },
+    "./vanilla": {
+      "types": "./dist/vanilla.d.ts",
+      "import": "./dist/vanilla.js"
+    },
+    "./package.json": "./package.json"
   }
 }
