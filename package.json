@@ -29,13 +29,11 @@
     "dist",
     "README.md",
     "LICENSE",
-    "banner.js"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "postinstall": "node ./banner.js || exit 0"
   },
   "keywords": [
     "viewport",
@@ -75,6 +73,9 @@
     "Angular",
     "vanilla JS"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "license": "MIT",
   "type": "module",
   "sideEffects": false,

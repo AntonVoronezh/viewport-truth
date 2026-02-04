@@ -114,7 +114,7 @@ Use the `viewportTruth` store-like helper.
 Use the `createViewportTruth` primitive.
 
 ```tsx
-iimport { createViewportTruth } from "viewport-truth/solid";
+import { createViewportTruth } from "viewport-truth/solid";
 
 export function DebugViewport() {
     const v = createViewportTruth();
