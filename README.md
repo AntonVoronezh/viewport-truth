@@ -40,6 +40,9 @@ yarn add viewport-truth
 pnpm add viewport-truth
 ```
 
+> **Note:** ESM-only package — use `import ...` (CommonJS `require()` is not supported).
+
+
 ## Usage 🚀
 
 ### React
