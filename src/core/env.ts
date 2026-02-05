@@ -25,14 +25,27 @@ export const queueMicrotaskSafe = (cb: () => void): void => {
     else Promise.resolve().then(cb).catch(() => void 0);
 };
 
+type GlobalWithIdleCallback = typeof globalThis & {
+    requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+    cancelIdleCallback?: (id: number) => void;
+};
+
 export const requestIdle = (cb: IdleRequestCallback, timeoutMs = 200): number => {
-    const ric = (globalThis as any).requestIdleCallback as undefined | ((c: IdleRequestCallback, o?: IdleRequestOptions) => number);
+    const g = globalThis as unknown as GlobalWithIdleCallback;
+    const ric = g.requestIdleCallback;
+
     if (typeof ric === "function") return ric(cb, { timeout: timeoutMs });
-    return setTimeout(() => cb({ didTimeout: true, timeRemaining: () => 0 } as IdleDeadline), 0) as unknown as number;
+
+    return setTimeout(
+        () => cb({ didTimeout: true, timeRemaining: () => 0 } as IdleDeadline),
+        0
+    ) as unknown as number;
 };
 
 export const cancelIdle = (id: number): void => {
-    const cic = (globalThis as any).cancelIdleCallback as undefined | ((i: number) => void);
+    const g = globalThis as unknown as GlobalWithIdleCallback;
+    const cic = g.cancelIdleCallback;
+
     if (typeof cic === "function") cic(id);
     else clearTimeout(id as unknown as number);
 };
