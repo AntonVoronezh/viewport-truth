@@ -39,51 +39,7 @@ const unsub = vt.subscribe((v) => {
 // vt.destroy();
 ```
 
-## Quick Start test (clean environment)
-
-This verifies the Quick Start code runs end-to-end in a fresh project.
-
-```bash
-mkdir vt-smoke && cd vt-smoke
-npm init -y
-npm i viewport-truth vite
-npm pkg set type=module
-```
-Create index.html:
-
-```html
-<!doctype html>
-<html>
-  <body>
-    <pre id="out">loading…</pre>
-    <script type="module" src="/main.js"></script>
-  </body>
-</html>
-```
-
-Create main.js:
-
-```js
-import { createViewportTruth } from "viewport-truth/vanilla";
-
-const out = document.getElementById("out");
-const vt = createViewportTruth();
-
-vt.subscribe((v) => {
-  out.textContent = JSON.stringify(v, null, 2);
-});
-```
-
-Run:
-
-```bash
-npx vite
-```
-
-Open the URL on mobile (or device emulator) and focus an input to see `isKeyboardOpen` change.
-
 ## Wow example (keyboard eats UI… and you can see it)
-
 A tiny bottom bar that stays visible and shows exactly how much viewport you lost.
 
 > Run it in a real page (Vite/Parcel/Next) — the snippet won’t execute inside README.  
@@ -141,8 +97,11 @@ stable:   ${v.isStable}`;
 </script>
 ```
 
-## Features
+### Smoke test (clean environment)
+Step-by-step guide: **[smoke-test.md](https://github.com/AntonVoronezh/viewport-truth/blob/main//docs/smoke-test.md)**.
 
+
+## Features
 A few concrete, technical reasons it behaves well on mobile:
 
 - **Tiny:** ~< 2 KB min+gzip (check the Bundlephobia badge).
@@ -152,7 +111,7 @@ A few concrete, technical reasons it behaves well on mobile:
 
 ---
 
-## API (snapshot)
+## API (short)
 
 Core snapshot fields you’ll typically use:
 
@@ -160,6 +119,10 @@ Core snapshot fields you’ll typically use:
 - `layoutWidth`, `layoutHeight` — layout viewport (basis for keyboard detection)
 - `isKeyboardOpen` — geometry-based keyboard inference
 - `isStable` — “animations settled” signal for UI decisions
+
+Vanilla store:
+
+- `createViewportTruth()` from `viewport-truth/vanilla` → creates a store with `subscribe()` and `destroy()`
 
 Framework adapters:
 
@@ -169,7 +132,9 @@ Framework adapters:
 - **Solid:** `createViewportTruth` from `viewport-truth/solid`
 - **Angular:** `ViewportTruthDirective` from `viewport-truth/angular`
 
-Docs: [React](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/react.md) •
+Full types and signatures: see `dist/*.d.ts` (or TypeScript IntelliSense).  
+
+Adapter Docs: [React](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/react.md) •
 [Vue](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/vue.md) •
 [Svelte](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/svelte.md) •
 [Solid](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/solid.md) •
@@ -184,7 +149,7 @@ Docs: [React](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/rea
 If this library saved you time, please consider supporting the development:
 
 1. **Fiat (Cards/PayPal):** via **[Boosty](https://boosty.to/antonvoronezh/donate)** (one-time or monthly).
-2. **Crypto (USDT/TON/BTC/ETH):** view wallet addresses on **[Telegram](https://t.me/AntonVoronezhh/4)**.
+2. **Crypto (USDT/BTC/ETH):** view wallet addresses on **[Telegram](https://t.me/AntonVoronezhh/4)**.
 
 [![Support on Boosty](https://img.shields.io/badge/Support_on-Boosty-orange?style=for-the-badge&logo=boosty)](https://boosty.to/antonvoronezh/donate)
 [![Crypto via Telegram](https://img.shields.io/badge/Crypto_via-Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/AntonVoronezhh/4)
