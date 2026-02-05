@@ -1,8 +1,8 @@
-export * from "./core/index";
+export * from "./core/index.js";
+export * as vanilla from "./vanilla.js";
 
-export * as react from "./react";
-export * as vue from "./vue";
-export * as svelte from "./svelte";
-export * as solid from "./solid";
-export * as angular from "./angular";
-export * as vanilla from "./vanilla";
+export type * as react from "./react.js";
+export type * as vue from "./vue.js";
+export type * as svelte from "./svelte.js";
+export type * as solid from "./solid.js";
+export type * as angular from "./angular.js";

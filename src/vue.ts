@@ -1,6 +1,6 @@
 import { onBeforeUnmount, onMounted, shallowRef, type ShallowRef, type Directive } from "vue";
-import type { ViewportTruthOptions, ViewportTruthSnapshot } from "./core/types";
-import { createViewportTruthStore } from "./core/engine";
+import type { ViewportTruthOptions, ViewportTruthSnapshot } from "./core/types.js";
+import { createViewportTruthStore } from "./core/engine.js";
 
 export const useViewportTruth = (
     options?: ViewportTruthOptions

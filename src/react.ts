@@ -1,6 +1,6 @@
 import { useMemo, useSyncExternalStore } from "react";
-import type { ViewportTruthOptions, ViewportTruthSnapshot } from "./core/types";
-import { createViewportTruthStore } from "./core/engine";
+import type { ViewportTruthOptions, ViewportTruthSnapshot } from "./core/types.js";
+import { createViewportTruthStore } from "./core/engine.js";
 
 export type UseViewportTruthResult = ViewportTruthSnapshot | null;
 

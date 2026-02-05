@@ -1,4 +1,4 @@
-import { caf, raf, queueMicrotaskSafe, requestIdle, cancelIdle } from "./env";
+import { caf, raf, queueMicrotaskSafe, requestIdle, cancelIdle } from "./env.js";
 
 export type Scheduler = Readonly<{
     scheduleFrame: (fn: () => void) => void;

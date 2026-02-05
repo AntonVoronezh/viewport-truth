@@ -1,6 +1,6 @@
-import type { ViewportTruthOptions, ViewportTruthSnapshot, ViewportTruthStore } from "./types";
-import { canUseDOM, now } from "./env";
-import { createScheduler } from "./scheduler";
+import type { ViewportTruthOptions, ViewportTruthSnapshot, ViewportTruthStore } from "./types.js";
+import { canUseDOM, now } from "./env.js";
+import { createScheduler } from "./scheduler.js";
 
 const clampMin = (n: number, min: number) => (Number.isFinite(n) ? Math.max(min, n) : min);
 
@@ -218,7 +218,7 @@ export const createViewportTruthStore = (options?: ViewportTruthOptions): Viewpo
     return {
         getSnapshot: () => snapshot,
         getServerSnapshot: () => null,
-        subscribe: (listener) => {
+        subscribe: (listener: () => void) => {
             if (destroyed) return () => void 0;
 
             listeners.add(listener);

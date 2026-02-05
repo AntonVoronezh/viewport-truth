@@ -3,6 +3,6 @@ export type {
     ViewportTruthSnapshot,
     ViewportTruthStore,
     ViewportTruthSubscribe,
-} from "./types";
+} from "./types.js";
 
-export { createViewportTruthStore } from "./engine";
+export { createViewportTruthStore } from "./engine.js";

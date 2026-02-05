@@ -1,6 +1,6 @@
 import { Directive, DestroyRef, effect, inject, input, signal, type Signal } from "@angular/core";
-import type { ViewportTruthOptions, ViewportTruthSnapshot } from "./core/types";
-import { createViewportTruthStore } from "./core/engine";
+import type { ViewportTruthOptions, ViewportTruthSnapshot } from "./core/types.js";
+import { createViewportTruthStore } from "./core/engine.js";
 
 /**
  * Usage:

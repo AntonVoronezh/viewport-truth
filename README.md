@@ -8,7 +8,11 @@
 [![tests](https://img.shields.io/github/actions/workflow/status/AntonVoronezh/viewport-truth/ci.yml?branch=main&style=flat-square&label=tests)](https://github.com/AntonVoronezh/viewport-truth/actions/workflows/ci.yml)
 [![Boosty](https://img.shields.io/badge/Support-Boosty-orange?style=flat-square&logo=boosty)](https://boosty.to/antonvoronezh/donate)
 [![Crypto](https://img.shields.io/badge/Donate-Crypto-2CA5E0?style=flat-square&logo=telegram&logoColor=white)](https://t.me/AntonVoronezhh/4)
-[![minzipped size](https://img.shields.io/bundlephobia/minzip/viewport-truth?style=flat-square)](https://bundlephobia.com/package/viewport-truth)
+[![pkg-size](https://pkg-size.dev/badge/viewport-truth)](https://pkg-size.dev/viewport-truth)
+
+
+
+Stop guessing mobile viewport sizes. viewport-truth delivers stable, keyboard-aware visible viewport metrics (VisualViewport-first) across iOS Safari, Android Chrome, PWAs, and webviews—framework adapters included, SSR-safe, zero runtime deps.
 
 ```bash
 npm i viewport-truth
@@ -17,7 +21,6 @@ npm i viewport-truth
 ```
 
 
-Stop guessing mobile viewport sizes. viewport-truth delivers stable, keyboard-aware visible viewport metrics (VisualViewport-first) across iOS Safari, Android Chrome, PWAs, and webviews—framework adapters included, SSR-safe, zero runtime deps.
 ### Quick Start
 Minimal flow: import → create → subscribe → get { width, height, isKeyboardOpen, isStable }.
 
