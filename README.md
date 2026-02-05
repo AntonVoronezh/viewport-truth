@@ -5,7 +5,7 @@
 [![npm version](https://img.shields.io/npm/v/viewport-truth.svg?style=flat-square)](https://www.npmjs.com/package/viewport-truth)
 [![npm downloads](https://img.shields.io/npm/dm/viewport-truth.svg?style=flat-square)](https://www.npmjs.com/package/viewport-truth)
 [![license](https://img.shields.io/npm/l/viewport-truth.svg?style=flat-square)](https://github.com/AntonVoronezh/viewport-truth/blob/main/LICENSE)
-[![tests](https://img.shields.io/github/actions/workflow/status/AntonVoronezh/viewport-truth/ci.yml?style=flat-square&label=tests)](https://github.com/AntonVoronezh/viewport-truth/actions)
+[![tests](https://img.shields.io/github/actions/workflow/status/AntonVoronezh/viewport-truth/ci.yml?branch=main&style=flat-square&label=tests)](https://github.com/AntonVoronezh/viewport-truth/actions/workflows/ci.yml)
 [![Boosty](https://img.shields.io/badge/Support-Boosty-orange?style=flat-square&logo=boosty)](https://boosty.to/antonvoronezh/donate)
 [![Crypto](https://img.shields.io/badge/Donate-Crypto-2CA5E0?style=flat-square&logo=telegram&logoColor=white)](https://t.me/AntonVoronezhh/4)
 [![minzipped size](https://img.shields.io/bundlephobia/minzip/viewport-truth?style=flat-square)](https://bundlephobia.com/package/viewport-truth)
@@ -17,14 +17,7 @@ npm i viewport-truth
 ```
 
 
-viewport-truth is a tiny, zero-config library that gives you **the real visible mobile viewport**—the numbers your UI actually needs.
-It’s built **VisualViewport-first** (with safe fallbacks), so you can stop guessing when iOS Safari or Android Chrome decide to animate the URL bar.
-It also detects when the **virtual keyboard** truly reduces usable space, keeping sticky footers, bottom sheets, and chat inputs where users can see them.
-Updates are **stabilized** to avoid noisy resize/scroll event storms during browser UI transitions.
-Drop it into React, Vue, Svelte, Solid, Angular, or plain JS with **no runtime dependencies**.
-It’s **SSR-safe** (returns `null` on the server) and only attaches listeners in the browser.
-The goal is simple: **trustworthy viewport metrics** across iOS Safari, Android Chrome, PWAs, and webviews—without brittle hacks.
-
+Stop guessing mobile viewport sizes. viewport-truth delivers stable, keyboard-aware visible viewport metrics (VisualViewport-first) across iOS Safari, Android Chrome, PWAs, and webviews—framework adapters included, SSR-safe, zero runtime deps.
 ### Quick Start
 Minimal flow: import → create → subscribe → get { width, height, isKeyboardOpen, isStable }.
 
@@ -181,12 +174,7 @@ Docs: [React](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/rea
 [Svelte](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/svelte.md) •
 [Solid](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/solid.md) •
 [Angular](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/angular.md)
-
-## Badges / links
-
-- **npm:** https://www.npmjs.com/package/viewport-truth
-- **size:** https://bundlephobia.com/package/viewport-truth
-- **tests:** https://github.com/AntonVoronezh/viewport-truth/actions
+> **Tip:** Open links in a new tab with **Ctrl+Click** (Windows/Linux) or **Cmd+Click** (macOS).
 
 ## Support the project 
 
