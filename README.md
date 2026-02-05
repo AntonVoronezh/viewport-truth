@@ -1,254 +1,205 @@
-# viewport-truth 🏆
+# viewport-truth
+
+> Fastest way to measure the real visible mobile viewport without 100vh glitches, resize/scroll jitter, or keyboard hacks.
 
 [![npm version](https://img.shields.io/npm/v/viewport-truth.svg?style=flat-square)](https://www.npmjs.com/package/viewport-truth)
-[![minzipped size](https://img.shields.io/bundlephobia/minzip/viewport-truth?style=flat-square)](https://bundlephobia.com/package/viewport-truth)
-[![license](https://img.shields.io/npm/l/viewport-truth?style=flat-square)](https://github.com/your-org/viewport-truth/blob/main/LICENSE)
+[![npm downloads](https://img.shields.io/npm/dm/viewport-truth.svg?style=flat-square)](https://www.npmjs.com/package/viewport-truth)
+[![license](https://img.shields.io/npm/l/viewport-truth.svg?style=flat-square)](https://github.com/AntonVoronezh/viewport-truth/blob/main/LICENSE)
+[![tests](https://img.shields.io/github/actions/workflow/status/AntonVoronezh/viewport-truth/ci.yml?style=flat-square&label=tests)](https://github.com/AntonVoronezh/viewport-truth/actions)
 [![Boosty](https://img.shields.io/badge/Support-Boosty-orange?style=flat-square&logo=boosty)](https://boosty.to/antonvoronezh/donate)
 [![Crypto](https://img.shields.io/badge/Donate-Crypto-2CA5E0?style=flat-square&logo=telegram&logoColor=white)](https://t.me/AntonVoronezhh/4)
-
-> **Zero-config, tiny “real viewport” store.**  
-> Always returns the *visible* viewport size in **CSS px** (VisualViewport-first) and tells you when the **virtual keyboard** actually ate your UI.
-
----
-
-## Why? 🤔
-
-Mobile viewport is Geometry Hell. You write `100vh` and expect “screen height”. The browser replies: “adorable.”
-
-You don’t want to:
-
-- ❌ Build “fullscreen” layouts that jump on iOS Safari when the URL bar expands/collapses.
-- ❌ Ship modals / sticky footers that slide under the virtual keyboard.
-- ❌ Depend on `resize` events that jitter on scroll and lie across mobile browsers.
-- ❌ Maintain hacks with `focusin/focusout`, timeouts, and fragile heuristics.
-
-**viewport-truth** solves it by using the **Visual Viewport API** as the primary source of truth, stabilizing updates, and providing `isKeyboardOpen` based on geometry—without DOM polling.
-
-- **Universal:** React, Vue, Svelte, Solid, Angular, Vanilla.
-- **Tiny:** tree-shakeable, zero runtime deps.
-- **Performant:** rAF throttling, microtask coalescing, idle stability work.
-
----
-
-## Installation 📦
+[![minzipped size](https://img.shields.io/bundlephobia/minzip/viewport-truth?style=flat-square)](https://bundlephobia.com/package/viewport-truth)
 
 ```bash
-npm install viewport-truth
-# or
-yarn add viewport-truth
-# or
-pnpm add viewport-truth
+npm i viewport-truth
+# or: yarn add viewport-truth
+# or: pnpm add viewport-truth
 ```
 
-> **Note:** ESM-only package — use `import ...` (CommonJS `require()` is not supported).
 
+viewport-truth is a tiny, zero-config library that gives you **the real visible mobile viewport**—the numbers your UI actually needs.
+It’s built **VisualViewport-first** (with safe fallbacks), so you can stop guessing when iOS Safari or Android Chrome decide to animate the URL bar.
+It also detects when the **virtual keyboard** truly reduces usable space, keeping sticky footers, bottom sheets, and chat inputs where users can see them.
+Updates are **stabilized** to avoid noisy resize/scroll event storms during browser UI transitions.
+Drop it into React, Vue, Svelte, Solid, Angular, or plain JS with **no runtime dependencies**.
+It’s **SSR-safe** (returns `null` on the server) and only attaches listeners in the browser.
+The goal is simple: **trustworthy viewport metrics** across iOS Safari, Android Chrome, PWAs, and webviews—without brittle hacks.
 
-## Usage 🚀
-
-### React
-
-Use the `useViewportTruth` hook.
-
-```tsx
-import { useViewportTruth } from "viewport-truth/react";
-
-export function DebugViewport() {
-    const v = useViewportTruth();
-
-    if (!v) return null; // SSR-safe
-
-    return (
-        <div style={{ padding: 12, border: "1px solid #ddd" }}>
-            <div>Visible: {v.width} × {v.height} (CSS px)</div>
-            <div>Keyboard: {String(v.isKeyboardOpen)} · Stable: {String(v.isStable)}</div>
-        </div>
-    );
-}
-
-```
-
-### Vue 3
-
-Use the `useViewportTruth` composable.
-
-```html
-<script setup lang="ts">
-    import { computed } from "vue";
-    import { useViewportTruth } from "viewport-truth/vue";
-
-    const v = useViewportTruth();
-    const label = computed(() =>
-            v.value
-                    ? `Visible: ${v.value.width}×${v.value.height} · Keyboard: ${v.value.isKeyboardOpen}`
-                    : "SSR…"
-    );
-</script>
-
-<template>
-    <div style="padding: 12px; border: 1px solid #ddd;">
-        {{ label }}
-    </div>
-</template>
-
-
-```
-
-### Svelte
-
-Use the `viewportTruth` store-like helper.
-
-```svelte
-<script lang="ts">
-  import { viewportTruth } from "viewport-truth/svelte";
-  const v = viewportTruth();
-</script>
-
-<div style="padding:12px;border:1px solid #ddd">
-  {#if $v}
-    <div>Visible: {$v.width}×{$v.height}</div>
-    <div>Keyboard: {$v.isKeyboardOpen} · Stable: {$v.isStable}</div>
-  {/if}
-</div>
-
-```
-
-### SolidJS
-
-Use the `createViewportTruth` primitive.
-
-```tsx
-import { createViewportTruth } from "viewport-truth/solid";
-
-export function DebugViewport() {
-    const v = createViewportTruth();
-
-    return (
-        <div style={{ padding: "12px", border: "1px solid #ddd" }}>
-            {v() ? (
-                <>
-                    <div>Visible: {v()!.width}×{v()!.height}</div>
-                    <div>Keyboard: {String(v()!.isKeyboardOpen)} · Stable: {String(v()!.isStable)}</div>
-                </>
-            ) : null}
-        </div>
-    );
-}
-```
-
-### Angular (17+)
-
-Use the standalone `ViewportTruthDirective`.
-
-```typescript
-import { Component } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { ViewportTruthDirective } from "viewport-truth/angular";
-
-@Component({
-    selector: "app-viewport-debug",
-    standalone: true,
-    imports: [CommonModule, ViewportTruthDirective],
-    template: `
-    <div viewportTruth #vt="viewportTruth" style="padding:12px;border:1px solid #ddd;">
-      <ng-container *ngIf="vt.vt()() as v">
-        <div>Visible: {{ v.width }}×{{ v.height }}</div>
-        <div>Keyboard: {{ v.isKeyboardOpen }} · Stable: {{ v.isStable }}</div>
-      </ng-container>
-    </div>
-  `,
-})
-export class ViewportDebugComponent {}
-
-```
-
-### Vanilla JS
+### Quick Start
+Minimal flow: import → create → subscribe → get { width, height, isKeyboardOpen, isStable }.
 
 ```js
 import { createViewportTruth } from "viewport-truth/vanilla";
 
-const el = document.getElementById("debug");
-
 const vt = createViewportTruth();
+
 const unsub = vt.subscribe((v) => {
-    el.textContent = `Visible: ${v.width}×${v.height} | Keyboard: ${v.isKeyboardOpen} | Stable: ${v.isStable}`;
+    if (!v) return;
+
+    console.log(
+        `visible=${v.width}x${v.height} keyboard=${v.isKeyboardOpen} stable=${v.isStable}`
+    );
 });
 
-// Later:
+// later:
 // unsub();
 // vt.destroy();
-
 ```
+
+## Quick Start test (clean environment)
+
+This verifies the Quick Start code runs end-to-end in a fresh project.
+
+```bash
+mkdir vt-smoke && cd vt-smoke
+npm init -y
+npm i viewport-truth vite
+npm pkg set type=module
+```
+Create index.html:
+
+```html
+<!doctype html>
+<html>
+  <body>
+    <pre id="out">loading…</pre>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
+```
+
+Create main.js:
+
+```js
+import { createViewportTruth } from "viewport-truth/vanilla";
+
+const out = document.getElementById("out");
+const vt = createViewportTruth();
+
+vt.subscribe((v) => {
+  out.textContent = JSON.stringify(v, null, 2);
+});
+```
+
+Run:
+
+```bash
+npx vite
+```
+
+Open the URL on mobile (or device emulator) and focus an input to see `isKeyboardOpen` change.
+
+## Wow example (keyboard eats UI… and you can see it)
+
+A tiny bottom bar that stays visible and shows exactly how much viewport you lost.
+
+> Run it in a real page (Vite/Parcel/Next) — the snippet won’t execute inside README.  
+> On mobile: scroll a bit (URL bar), then focus the input (keyboard).
+
+```html
+<div id="app" style="padding:16px 16px 96px">
+  <input
+    placeholder="Focus me to open keyboard"
+    style="width:100%;padding:12px;font-size:16px;box-sizing:border-box"
+  />
+  <p style="margin:12px 0 0;color:#444">
+    Tip: scroll a bit (URL bar animates), then focus the input.
+  </p>
+
+  <div style="height:120vh"></div>
+  <div id="bar"></div>
+</div>
+
+<script type="module">
+  import { createViewportTruth } from "viewport-truth/vanilla";
+
+  const bar = document.getElementById("bar");
+  Object.assign(bar.style, {
+    position: "fixed",
+    left: "0",
+    right: "0",
+    bottom: "0",
+    padding: "10px 12px",
+    font: "12px/1.35 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+    background: "rgba(0,0,0,.86)",
+    color: "white",
+    zIndex: "9999",
+    whiteSpace: "pre",
+  });
+
+  const vt = createViewportTruth();
+
+  vt.subscribe((v) => {
+    if (!v) return;
+
+    // Fallback keeps the snippet working even if layoutWidth/layoutHeight aren't present.
+    const layoutW = v.layoutWidth ?? v.width;
+    const layoutH = v.layoutHeight ?? v.height;
+
+    const lost = Math.max(0, layoutH - v.height);
+
+    bar.textContent =
+`visible:  ${v.width}×${v.height}
+layout:   ${layoutW}×${layoutH}
+lost:     ${lost}px
+keyboard: ${v.isKeyboardOpen}
+stable:   ${v.isStable}`;
+  });
+</script>
+```
+
+## Features
+
+A few concrete, technical reasons it behaves well on mobile:
+
+- **Tiny:** ~< 2 KB min+gzip (check the Bundlephobia badge).
+- **Fast updates:** emits at most **1 update per animation frame** (rAF throttling).
+- **Zero runtime deps:** **0 dependencies** at runtime (tree-shakeable ESM).
+- **Stable signal:** `isStable` flips after **150ms** (default) without geometry changes.
 
 ---
 
-## Configuration ⚙️
+## API (snapshot)
 
-You can tune stability and keyboard detection without changing your app code.
+Core snapshot fields you’ll typically use:
 
-```ts
-// React
-useViewportTruth({
-  stableDelayMs: 150,
-  keyboardRatio: 0.75,
-  keyboardMinDeltaPx: 120,
-});
+- `width`, `height` — visible viewport size (CSS px)
+- `layoutWidth`, `layoutHeight` — layout viewport (basis for keyboard detection)
+- `isKeyboardOpen` — geometry-based keyboard inference
+- `isStable` — “animations settled” signal for UI decisions
 
-// Vanilla
-createViewportTruth({
-  trustVisualViewportUnderZoom: true,
-  minViewportPx: 1,
-});
+Framework adapters:
 
-```
+- **React:** `useViewportTruth` from `viewport-truth/react`
+- **Vue:** `useViewportTruth` from `viewport-truth/vue`
+- **Svelte:** `viewportTruth` from `viewport-truth/svelte`
+- **Solid:** `createViewportTruth` from `viewport-truth/solid`
+- **Angular:** `ViewportTruthDirective` from `viewport-truth/angular`
 
-| Option | Type | Default | Description |
-|---|---|---:|---|
-| `stableDelayMs` | `number` | `150` | `isStable` becomes `true` after this many ms without changes (end of URL bar/keyboard animation). |
-| `keyboardRatio` | `number` | `0.75` | If `visibleHeight < layoutHeight * keyboardRatio`, keyboard is likely open. |
-| `keyboardMinDeltaPx` | `number` | `120` | Minimum height loss (px) required to mark keyboard as open (prevents false positives). |
-| `minViewportPx` | `number` | `1` | Clamps transient `0` / broken values during rotations and browser quirks. |
-| `trustVisualViewportUnderZoom` | `boolean` | `true` | Keep using `visualViewport` even when pinch-zoom is active (`scale !== 1`). |
-| `safeAreaInsets` | `{ top?: number; right?: number; bottom?: number; left?: number }` | `{}` | Optional safe-area compensation (core does not read CSS `env()` automatically). |
+Docs: [React](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/react.md) •
+[Vue](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/vue.md) •
+[Svelte](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/svelte.md) •
+[Solid](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/solid.md) •
+[Angular](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/angular.md)
 
+## Badges / links
 
-## How it works 🛠️
+- **npm:** https://www.npmjs.com/package/viewport-truth
+- **size:** https://bundlephobia.com/package/viewport-truth
+- **tests:** https://github.com/AntonVoronezh/viewport-truth/actions
 
-The API looks simple, but it’s doing a few careful things to stay *correct* on mobile.
-
-- **VisualViewport-first:** If `window.visualViewport` exists, we treat it as the source of truth for the **visible** viewport.
-    - We listen to `visualViewport.resize` **and** `visualViewport.scroll` (mobile browsers change viewport without a classic `window.resize`).
-- **Fallback path:** If Visual Viewport API is unavailable, we fall back to `window.innerWidth/innerHeight`.
-- **Coalesced updates:** Multiple events in a burst are merged into a single update (no “event spam”).
-- **Frame throttling:** Updates are emitted **at most once per animation frame** (via `requestAnimationFrame`) to reduce layout thrash.
-- **Stability flag:** `isStable` turns `true` only after `stableDelayMs` with no changes (useful during URL bar / keyboard animations).
-- **Keyboard detection (geometry-based):** We infer `isKeyboardOpen` by comparing **visible** vs **layout** viewport:
-    - `visibleHeight < layoutHeight * keyboardRatio` and
-    - `(layoutHeight - visibleHeight) >= keyboardMinDeltaPx`
-- **SSR-safe:** On the server, it returns `null` and attaches listeners only in the browser.
-- **No DOM polling:** Core doesn’t query your layout or mutate styles; it only reads viewport metrics and emits snapshots.
-
-## Support the project ❤️
+## Support the project 
 
 > “We ate the Geometry Hell for you: jumping `100vh`, jittery `resize`, modals under the keyboard.  
 > You saved hours (and sanity). A donation is a fair trade for a rock-solid UI and weekends free from debugging.”
 
 If this library saved you time, please consider supporting the development:
 
-1.  **Fiat (Cards/PayPal):** via **[Boosty](https://boosty.to/antonvoronezh/donate)** (one-time or monthly).
-2.  **Crypto (USDT/TON/BTC/ETH):** view wallet addresses on **[Telegram](https://t.me/AntonVoronezhh/4)**.
+1. **Fiat (Cards/PayPal):** via **[Boosty](https://boosty.to/antonvoronezh/donate)** (one-time or monthly).
+2. **Crypto (USDT/TON/BTC/ETH):** view wallet addresses on **[Telegram](https://t.me/AntonVoronezhh/4)**.
 
-<div style="display: flex; gap: 10px;">
-  <a href="https://boosty.to/antonvoronezh/donate">
-    <img src="https://img.shields.io/badge/Support_on-Boosty-orange?style=for-the-badge&logo=boosty" alt="Support on Boosty">
-  </a>
-  <a href="https://t.me/AntonVoronezhh/4">
-    <img src="https://img.shields.io/badge/Crypto_via-Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Crypto via Telegram">
-  </a>
-</div>
+[![Support on Boosty](https://img.shields.io/badge/Support_on-Boosty-orange?style=for-the-badge&logo=boosty)](https://boosty.to/antonvoronezh/donate)
+[![Crypto via Telegram](https://img.shields.io/badge/Crypto_via-Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/AntonVoronezhh/4)
 
 ## License
-
 MIT
-
-## Keywords
-`viewport`, `visualViewport`, `mobile viewport`, `iOS Safari`, `Android Chrome`, `100vh`, `dvh`, `svh`, `lvh`, `safe-area-inset`, `on-screen keyboard`, `virtual keyboard`, `resize`, `scroll`, `URL bar`, `address bar`, `layout viewport`, `visual viewport`, `responsive UI`, `modals`, `bottom sheet`, `fullscreen`, `PWA`, `SSR`, `requestAnimationFrame`, `debounce`, `throttling`, `webview`, `Capacitor`, `Cordova`, `React`, `Vue`, `Svelte`, `SolidJS`, `Angular`, `vanilla JS`
