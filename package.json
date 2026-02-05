@@ -1,6 +1,6 @@
 {
   "name": "viewport-truth",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Tiny zero‑config VisualViewport-first store for accurate visible viewport size in CSS pixels. Detects virtual keyboard, stabilizes resize/scroll jitter, and is SSR-safe across frameworks.",
   "author": {
     "name": "AntonVoronezh",
