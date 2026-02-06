@@ -97,13 +97,6 @@ stable:   ${v.isStable}`;
 </script>
 ```
 
-### Smoke test (clean environment)
-Step-by-step guide: **[smoke-test.md](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/smoke-test.md)**.
-
-### Common pitfalls
-Typical integration mistakes and fixes: **[common-pitfalls.md](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/common-pitfalls.md)**.
-
-
 ## Features
 A few concrete, technical reasons it behaves well on mobile:
 
@@ -137,16 +130,17 @@ Framework adapters:
 
 Full types and signatures: see `dist/*.d.ts` (or TypeScript IntelliSense).  
 
-Adapter Docs: [React](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/react.md) •
-[Vue](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/vue.md) •
-[Svelte](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/svelte.md) •
-[Solid](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/solid.md) •
-[Angular](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/angular.md)
+Adapter Docs: [React](https://antonvoronezh.github.io/viewport-truth/react) •
+[Vue](https://antonvoronezh.github.io/viewport-truth/vue) •
+[Svelte](https://antonvoronezh.github.io/viewport-truth/svelte) •
+[Solid](https://antonvoronezh.github.io/viewport-truth/solid) •
+[Angular](https://antonvoronezh.github.io/viewport-truth/angular)
 > **Tip:** Open links in a new tab with **Ctrl+Click** (Windows/Linux) or **Cmd+Click** (macOS).
 
-### FAQ
-Most common project-level questions: **[faq.md](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/faq.md)**.
-
+### Links
+[FAQ](https://antonvoronezh.github.io/viewport-truth/faq) •
+[Common pitfalls](https://antonvoronezh.github.io/viewport-truth/common-pitfalls) •
+[Smoke test (clean environment)](https://antonvoronezh.github.io/viewport-truth/smoke-test) 
 
 ## Support the project 
 

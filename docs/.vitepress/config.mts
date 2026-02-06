@@ -28,7 +28,8 @@ export default defineConfig({
                     { text: 'FAQ', link: '/faq' },
                     { text: 'Common pitfalls', link: '/common-pitfalls' },
                     { text: 'Smoke test', link: '/smoke-test' },
-                    { text: 'npm', link: '/npm' }
+                    { text: 'npm', link: '/npm' },
+                    { text: 'Funding', link: '/funding' },
                 ]
             }
         ]

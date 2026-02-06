@@ -98,6 +98,6 @@ See: [Common pitfalls](./common-pitfalls)
 ## Links
 - npm: https://www.npmjs.com/package/viewport-truth
 - GitHub: https://github.com/AntonVoronezh/viewport-truth
-- FAQ: https://antonvoronezh.github.io/viewport-truth/faq
-- Smoke test: https://antonvoronezh.github.io/viewport-truth/smoke-test
-
+- [FAQ test](./faq)
+- [Smoke test](./smoke-test)
+- [Funding](./funding)

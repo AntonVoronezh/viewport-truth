@@ -14,3 +14,4 @@ Tiny zero-config VisualViewport-first store for accurate visible viewport size i
 - [FAQ](./faq)
 - [Common pitfalls](./common-pitfalls)
 - [Smoke test](./smoke-test)
+- [Funding](./funding)
