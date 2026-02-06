@@ -59,7 +59,7 @@ export class ViewportTruthDirective {
     private _vt = signal<ViewportTruthSnapshot | null>(null);
 
     /**
-     * Returns a readonly {@link Signal} with the latest viewport snapshot.
+     * Returns a  readonly {@link Signal} with the latest viewport snapshot.
      *
      * @returns A readonly signal of {@link ViewportTruthSnapshot | null}. `null` until the first update runs.
      *
