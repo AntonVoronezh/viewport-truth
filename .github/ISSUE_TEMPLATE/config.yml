@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation (VitePress)
+    url: https://antonvoronezh.github.io/viewport-truth/
+    about: Read the docs before opening an issue.
+
+  - name: FAQ
+    url: https://antonvoronezh.github.io/viewport-truth/faq
+    about: Common questions and answers.
+
+  - name: Smoke test
+    url: https://antonvoronezh.github.io/viewport-truth/smoke-test
+    about: Quick sanity checks and examples.
+
+  - name: GitHub Discussions
+    url: https://github.com/AntonVoronezh/viewport-truth/discussions
+    about: Ask questions and share ideas.

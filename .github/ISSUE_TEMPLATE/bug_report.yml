@@ -1,0 +1,67 @@
+name: 🐞 Bug report
+description: Report a reproducible problem in viewport-truth
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug.
+        Please include a minimal reproduction — it dramatically speeds things up.
+
+  - type: input
+    id: package_version
+    attributes:
+      label: viewport-truth version
+      description: Output of `npm ls viewport-truth` or the version you installed.
+      placeholder: "e.g. 0.6.2"
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS + browser + framework (if any).
+      placeholder: "e.g. Windows 11, Chrome 121, React 18"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What you thought would happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happened. Add screenshots if helpful.
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: Link to a repo, StackBlitz/CodeSandbox, or paste the smallest code snippet.
+      placeholder: |
+        - Repo: https://github.com/...
+        - Or code:
+          ```ts
+          // minimal example here
+          ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / errors
+      description: Paste console output or stack traces.
+      render: shell
+    validations:
+      required: false

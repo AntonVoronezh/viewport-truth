@@ -1,0 +1,38 @@
+name: ❓ Question
+description: Ask a usage question (how to do X)
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please include your framework and a small snippet — it helps answer precisely.
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser + framework + version.
+      placeholder: "e.g. Safari iOS 17, Vue 3"
+    validations:
+      required: false
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: What are you trying to do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Code snippet (optional)
+      description: Minimal snippet showing current usage.
+      placeholder: |
+        ```ts
+        // your code here
+        ```
+    validations:
+      required: false
