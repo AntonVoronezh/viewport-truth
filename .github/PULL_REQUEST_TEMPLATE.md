@@ -4,7 +4,7 @@
 ## Why
 - 
 
-## How to test
+## How to  test
 - [ ] Unit tests (if applicable)
 - [ ] Manual check (describe steps)
 
