@@ -98,10 +98,10 @@ stable:   ${v.isStable}`;
 ```
 
 ### Smoke test (clean environment)
-Step-by-step guide: **[smoke-test.md](https://github.com/AntonVoronezh/viewport-truth/blob/main//docs/smoke-test.md)**.
+Step-by-step guide: **[smoke-test.md](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/smoke-test.md)**.
 
 ### Common pitfalls
-Typical integration mistakes and fixes: **[common-pitfalls.md](https://github.com/AntonVoronezh/viewport-truth/blob/main//docs/common-pitfalls.md)**.
+Typical integration mistakes and fixes: **[common-pitfalls.md](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/common-pitfalls.md)**.
 
 
 ## Features
@@ -143,6 +143,10 @@ Adapter Docs: [React](https://github.com/AntonVoronezh/viewport-truth/blob/main/
 [Solid](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/solid.md) •
 [Angular](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/angular.md)
 > **Tip:** Open links in a new tab with **Ctrl+Click** (Windows/Linux) or **Cmd+Click** (macOS).
+
+### FAQ
+Most common project-level questions: **[faq.md](https://github.com/AntonVoronezh/viewport-truth/blob/main/docs/faq.md)**.
+
 
 ## Support the project 
 
