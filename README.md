@@ -18,7 +18,7 @@ npm i viewport-truth
 ```
 
 
-### Quick Start
+## Quick Start
 Minimal flow: import → create → subscribe → get { width, height, isKeyboardOpen, isStable }.
 
 ```js

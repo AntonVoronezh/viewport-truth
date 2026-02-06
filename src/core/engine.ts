@@ -105,6 +105,44 @@ const withDefaults = (options?: ViewportTruthOptions): Required<ViewportTruthOpt
     safeAreaInsets: options?.safeAreaInsets ?? {},
 });
 
+/**
+ * Creates a viewport-truth store that tracks viewport metrics (layout/visual viewport),
+ * keyboard state, and stability, and notifies subscribers on changes.
+ *
+ * On the server (or any non-DOM environment) the store is still created, but:
+ * - `getSnapshot()` throws (to prevent accidental client-only usage)
+ * - `getServerSnapshot()` returns `null`
+ * - `subscribe()` is a no-op
+ *
+ * @param options - Optional configuration for stability timing, keyboard detection thresholds,
+ * minimum viewport clamp, zoom behavior, and safe-area insets adjustments.
+ *
+ * @returns A {@link ViewportTruthStore} with `getSnapshot`, `getServerSnapshot`, `subscribe`, and `destroy`.
+ *
+ * @example
+ * // Vanilla usage
+ * import { createViewportTruthStore } from "viewport-truth";
+ *
+ * const store = createViewportTruthStore();
+ * const unsubscribe = store.subscribe(() => {
+ *   console.log(store.getSnapshot());
+ * });
+ *
+ * // later
+ * unsubscribe();
+ * store.destroy();
+ *
+ * @example
+ * // Tuning keyboard detection and stability
+ * const store = createViewportTruthStore({
+ *   stableDelayMs: 200,
+ *   keyboardRatio: 0.7,
+ *   keyboardMinDeltaPx: 140,
+ *   trustVisualViewportUnderZoom: true,
+ *   safeAreaInsets: { bottom: 34 }
+ * });
+ */
+
 export const createViewportTruthStore = (options?: ViewportTruthOptions): ViewportTruthStore => {
     const opt = withDefaults(options);
 
