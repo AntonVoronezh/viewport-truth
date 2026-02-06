@@ -100,6 +100,9 @@ stable:   ${v.isStable}`;
 ### Smoke test (clean environment)
 Step-by-step guide: **[smoke-test.md](https://github.com/AntonVoronezh/viewport-truth/blob/main//docs/smoke-test.md)**.
 
+### Common pitfalls
+Typical integration mistakes and fixes: **[common-pitfalls.md](https://github.com/AntonVoronezh/viewport-truth/blob/main//docs/common-pitfalls.md)**.
+
 
 ## Features
 A few concrete, technical reasons it behaves well on mobile:
