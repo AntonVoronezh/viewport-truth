@@ -35,7 +35,10 @@
     "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "keywords": [
     "viewport",
@@ -114,6 +117,7 @@
     "solid-js": "^1.9.0",
     "svelte": "^4.2.0",
     "typescript": "^5.5.4",
+    "vitepress": "^1.6.4",
     "vitest": "^4.0.18",
     "vue": "^3.5.0"
   },
