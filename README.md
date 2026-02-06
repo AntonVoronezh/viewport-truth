@@ -140,7 +140,8 @@ Adapter Docs: [React](https://antonvoronezh.github.io/viewport-truth/react) •
 ### Links
 [FAQ](https://antonvoronezh.github.io/viewport-truth/faq) •
 [Common pitfalls](https://antonvoronezh.github.io/viewport-truth/common-pitfalls) •
-[Smoke test (clean environment)](https://antonvoronezh.github.io/viewport-truth/smoke-test) 
+[Smoke test (clean environment)](https://antonvoronezh.github.io/viewport-truth/smoke-test) •
+[Versioning policy](https://github.com/AntonVoronezh/viewport-truth/blob/main/SEMVER_POLICY.md)
 
 ## Support the project 
 
