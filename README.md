@@ -12,7 +12,7 @@
 Stop guessing mobile viewport sizes. viewport-truth delivers stable, keyboard-aware visible viewport metrics (VisualViewport-first) across iOS Safari, Android Chrome, PWAs, and webviews—framework adapters included, SSR-safe, zero runtime deps.
 
 <p align="center">
-  <img src="./assets/demo.min..gif" width="900" alt="Demo: stable visible viewport when keyboard opens">
+  <img src="./assets/demo.min.gif" width="900" alt="Demo: stable visible viewport when keyboard opens">
 </p>
 
 *Demo: tracks the **visible** viewport (VisualViewport), keeping UI stable when the URL bar / keyboard changes the viewport.*
