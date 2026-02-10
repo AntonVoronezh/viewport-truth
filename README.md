@@ -11,6 +11,13 @@
 
 Stop guessing mobile viewport sizes. viewport-truth delivers stable, keyboard-aware visible viewport metrics (VisualViewport-first) across iOS Safari, Android Chrome, PWAs, and webviews—framework adapters included, SSR-safe, zero runtime deps.
 
+<p align="center">
+  <img src="./assets/demo.gif" width="900" alt="Demo: stable visible viewport when keyboard opens">
+</p>
+
+*Demo: tracks the **visible** viewport (VisualViewport), keeping UI stable when the URL bar / keyboard changes the viewport.*
+
+
 ```bash
 npm i viewport-truth
 # or: yarn add viewport-truth
@@ -39,11 +46,8 @@ const unsub = vt.subscribe((v) => {
 // vt.destroy();
 ```
 
-## Wow example (keyboard eats UI… and you can see it)
-A tiny bottom bar that stays visible and shows exactly how much viewport you lost.
-
-> Run it in a real page (Vite/Parcel/Next) — the snippet won’t execute inside README.  
-> On mobile: scroll a bit (URL bar), then focus the input (keyboard).
+## Demo snippet (keyboard + URL bar)
+Use this in a real page (Vite/Parcel/Next). On mobile: scroll a bit (URL bar), then focus the input (keyboard).
 
 ```html
 <div id="app" style="padding:16px 16px 96px">
